@@ -2,15 +2,17 @@ var express = require('express');
 var router = express.Router();
 
 /* view setup */
-var objectToPass =
+var variablesToPass =
 {
   title: 'ContentMine',
-  iconsPath: "/images/icons/"
+  librariesPath: '/javascripts/libraries/',
+  faviconPath: '/images/favicon/',
+  iconsPath: '/images/icons/'
 };
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', objectToPass);
+  res.render('index', variablesToPass);
 });
 
 module.exports = router;

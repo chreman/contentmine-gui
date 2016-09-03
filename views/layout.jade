@@ -44,25 +44,49 @@ include ../node_modules/jade-bootstrap/components/bootswatch
 doctype html
 html(lang="en")
   head
+    // General:
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport",content="width=device-width, initial-scale=1")
     meta(name="description",content="")
     meta(name="author",content="")
-    link(rel="icon",href="/images/favicon/favicon.ico")
+    // Favicon:
+    link(rel='apple-touch-icon', sizes='60x60', href=faviconPath+'apple-icon-60x60.png')
+    link(rel='apple-touch-icon', sizes='72x72', href=faviconPath+'apple-icon-72x72.png')
+    link(rel='apple-touch-icon', sizes='76x76', href=faviconPath+'apple-icon-76x76.png')
+    link(rel='apple-touch-icon', sizes='114x114', href=faviconPath+'apple-icon-114x114.png')
+    link(rel='apple-touch-icon', sizes='120x120', href=faviconPath+'apple-icon-120x120.png')
+    link(rel='apple-touch-icon', sizes='144x144', href=faviconPath+'apple-icon-144x144.png')
+    link(rel='apple-touch-icon', sizes='152x152', href=faviconPath+'apple-icon-152x152.png')
+    link(rel='apple-touch-icon', sizes='180x180', href=faviconPath+'apple-icon-180x180.png')
+    link(rel='icon', type='image/png', sizes='192x192', href=faviconPath+'android-icon-192x192.png')
+    link(rel='icon', type='image/png', sizes='32x32', href=faviconPath+'favicon-32x32.png')
+    link(rel='icon', type='image/png', sizes='96x96', href=faviconPath+'favicon-96x96.png')
+    link(rel='icon', type='image/png', sizes='16x16', href=faviconPath+'favicon-16x16.png')
+    link(rel='icon',href=faviconPath+'favicon.ico')
+    link(rel='manifest', href=faviconPath+'manifest.json')
+    meta(name='msapplication-TileColor', content='#ffffff')
+    meta(name='msapplication-TileImage', content=faviconPath+'ms-icon-144x144.png')
+    meta(name='theme-color', content='#ffffff')
+    // Title:
     title= title
+    // Refs:
     block refs
       script(src='/javascripts/menu/modernizr.js')
-      link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700', rel='stylesheet', type='text/css')
       link(rel='stylesheet', href='/stylesheets/reset.css')
       link(rel='stylesheet', href='/stylesheets/style.css')
-      link(rel='stylesheet',href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
+      link(rel='stylesheet', href='/stylesheets/bootstrap/bootstrap-3.3.4.min.css')
+      // -- Hosted alternatives --
+        link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700', rel='stylesheet', type='text/css')
+        link(rel='stylesheet',href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
   body(data-spy="scroll",data-target=".scrollspy")
     block body
       block content
     block scripts
-      script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+      script(src=librariesPath+'jquery-2.1.4.min.js')
+      script(src=librariesPath+'bootstrap-3.3.4.min.js')
       script(src='/javascripts/menu/jquery.menu-aim.js')
       script(src='/javascripts/menu/main.js')
-      // Ensure this matches jade-bootstrap's version:
-      script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')
+      // -- Hosted alternatives --
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')
