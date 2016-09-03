@@ -1,28 +1,57 @@
 // colors
 
-$color-1: #3e454c; // Mako
-$color-2: #1784c7; // Denim
-$color-3: #ffffff; // White
-$color-4: #ff7e66; // Salmon
+$color-menu-base: #46515c;          // Menu base color
+$color-menu-denim: #1784c7;         // Menu denim
+$color-menu-white: #ffffff;         // Menu white
+$color-menu-bright: #ff7e66;        // Menu bright elements
+$color-match-menu-light: #585C64;   // A color that matches the lighter menu text.
+$color-bgd: #FCFAF9;                // Contentmine standard background
+$color-orange: #E57937;             // Contentmine orange
+$color-name-1: #dbdbdb;             // Contentmine stylistic name color 1 ("Content")
+$color-name-2: #000000;             // Contentmine stylistic name color 2 ("Mine")
 
 // image paths
 
-$icons-path: "../images/icons/";
+$path-icons: "../images/icons/";
 
 // other paths
 
-$fonts-path-google: "../fonts/google/";
+$path-fonts-google: "../fonts/google/";
 
 // fonts 
 
-$primary-font: 'Open Sans', sans-serif;
+$font-primary: 'Open Sans', sans-serif;
+$font-logo: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 // header size
 
-$header-height-S: 45px;
-$header-height-M: 55px;
+$header-height-S: 54px;
+$header-height-M: 66px;
+
+// logo positioning
+
+$logo-height: 36;
+$logo-width: 48;
+$logo-text-width: 132;
+
+$logo-y-responsive-adjustment: 6;
+$logo-x-responsive-adjustment: 8;
+$logo-x-aesthetic-adjustment: 4;
+
+$logo-height-original: 28;
+$logo-y-original: 13;
+$logo-y-improved-positioning: 4;
+
+$logo-y: ($logo-y-original + $logo-y-improved-positioning) + ($logo-height-original - $logo-height);
+
+$sidebar-width: 240; // Make sure this is equal in value to $sidebar-width-L below.
+$logo-total-width: $logo-width + $logo-text-width;
+$logo-equal-side-gap: ($sidebar-width - $logo-total-width) / 2;
+
+$logo-x: $logo-equal-side-gap - $logo-x-aesthetic-adjustment - $logo-x-responsive-adjustment;
+$logo-right-side-spacer: $logo-equal-side-gap + $logo-x-aesthetic-adjustment;
 
 //sidebar size
 
-$sidebar-width-M: 110px;
-$sidebar-width-L: 200px;
+$sidebar-width-M: 132px;
+$sidebar-width-L: 240px;

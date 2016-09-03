@@ -1,97 +1,65 @@
 extends layout
 
 block content
+  // header
   header.cd-main-header
     a.cd-logo(href='#0')
-      img(src=iconsPath+'cd-logo.svg', alt='Logo')
-    .cd-search.is-hidden
+      img(src=imagesPath+'/logos/contentmine-logo-small.svg', alt='Logo')
+      .name-holder
+        span.name-1 Content
+        span.name-2 Mine
+    .cd-search.is-hidden.disabled
       form(action='#0')
         input(type='search', placeholder='Search...')
-    // cd-search
     a.cd-nav-trigger(href='#0')
-      |Menu
+      .nav-trigger-text
+        Menu
       span
     nav.cd-nav
       ul.cd-top-nav
         li
-          a(href='#0') Tour
-        li
-          a(href='#0') Support
-        li.has-children.account
+          a(href='http://contentmine.org/', target='_blank') Visit Website
+        li.cd-last-nav-item.has-children
           a(href='#0')
-            img(src=iconsPath+'cd-avatar.png', alt='avatar')
-            |Account
+            img(src=iconsPath+'cd-settings.svg', alt='settings')
+            |Settings
           ul
             li
-              a(href='#0') My Account
+              a(href='#0') Placeholder 1
             li
-              a(href='#0') Edit Account
+              a(href='#0') Placeholder 2
             li
-              a(href='#0') Logout
+              a(href='#0') Placeholder 3
+  // main
   main.cd-main-content
     nav.cd-side-nav
       ul
-        li.cd-label Main
-        li.has-children.overview
-          a(href='#0') Overview
-          ul
-            li
-              a(href='#0') All Data
-            li
-              a(href='#0') Category 1
-            li
-              a(href='#0') Category 2
-        li.has-children.notifications.active
-          a(href='#0')
-            | Notifications
-            span.count 3
-          ul
-            li
-              a(href='#0') All Notifications
-            li
-              a(href='#0') Friends
-            li
-              a(href='#0') Other
-        li.has-children.comments
-          a(href='#0') Comments
-          ul
-            li
-              a(href='#0') All Comments
-            li
-              a(href='#0') Edit Comment
-            li
-              a(href='#0') Delete Comment
-      ul
-        li.cd-label Secondary
-        li.has-children.bookmarks
-          a(href='#0') Bookmarks
-          ul
-            li
-              a(href='#0') All Bookmarks
-            li
-              a(href='#0') Edit Bookmark
-            li
-              a(href='#0') Import Bookmark
-        li.has-children.images
-          a(href='#0') Images
-          ul
-            li
-              a(href='#0') All Images
-            li
-              a(href='#0') Edit Image
-        li.has-children.users
-          a(href='#0') Users
-          ul
-            li
-              a(href='#0') All Users
-            li
-              a(href='#0') Edit User
-            li
-              a(href='#0') Add User
-      ul
-        li.cd-label Action
+        li.cd-label Project
         li.action-btn
-          a(href='#0') + Button
+          a(href='#0') + Create
+      ul
+        li.cd-label Tools
+        li.getpapers
+          a(href='#0') GetPapers
+        li.quickscrape
+          a(href='#0') QuickScrape
+        li.norma
+          a(href='#0') Norma
+        li.ami.has-children
+          a(href='#0')
+            | Ami
+            span.count 5
+          ul
+            li
+              a(href='#0') Species
+            li
+              a(href='#0') Gene
+            li
+              a(href='#0') Sequence
+            li
+              a(href='#0') Regex
+            li
+              a(href='#0') Word
 
     // Page content:
     .content-wrapper

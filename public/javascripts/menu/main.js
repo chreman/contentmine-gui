@@ -6,7 +6,7 @@ jQuery(document).ready(function(){
 		sidebarTrigger = $('.cd-nav-trigger'),
 		topNavigation = $('.cd-top-nav'),
 		searchForm = $('.cd-search'),
-		accountInfo = $('.account');
+		accountInfo = $('.cd-last-nav-item');
 
 	//on resize, move search and top nav position according to window width
 	var resizing = false;

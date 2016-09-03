@@ -1,6 +1,6 @@
 @import './bourbon/bourbon'; // http://bourbon.io/
 
-@import './partials/variables'; // colors, fonts etc...
+@import './partials/variables'; // custom variables
 
 @import './partials/mixins'; // custom mixins
 
@@ -17,12 +17,17 @@ Primary style.
 
 body {
 
+  // Background color:
+  &.custom-bgd {
+    background-color: $color-bgd;
+  }
+
   .cd-side-nav, .cd-main-header {
     font: {
-      size: 1.6rem;
-      family: $primary-font; // variables inside partials > _variables.scss
+      size: 2.3rem;
+      family: $font-primary; // variables inside partials > _variables.scss
     }
-    color: $color-1;
+    color: $color-menu-base;
     @include clearfix;
   }
 
@@ -52,13 +57,13 @@ body {
           line-height: 1em;
         }
         a:active, a:hover {
-          color: $color-3;
+          color: $color-menu-white;
           text-decoration: none;
         }
         a:focus {
           outline: unset;
           outline-offset: unset;
-          color: $color-3;
+          color: $color-menu-white;
           text-decoration: none;
         }
       }
@@ -76,24 +81,28 @@ body {
         vertical-align: baseline;
         border: 0;
       }
+      &:focus {
+        outline: unset;
+      }
     }
     .cd-search {
-      margin-left: 40px;
+      margin-left: (0px+$logo-right-side-spacer);
       form > input {
-        font-family: $primary-font;
-        font-size: 1.6rem;
+        font-family: $font-primary;
+        font-size: 2.3rem;
         font: inherit;
         line-height: inherit;
         box-sizing: border-box;
         margin: 0;
       }
+
     }
     .cd-top-nav {
       margin: 0;
-      line-height: 1;
+      line-height: 1em;
       li {
         a {
-          color: $color-3;
+          color: $color-menu-white;
           background-color: transparent;
         }
         a:focus {
@@ -104,7 +113,16 @@ body {
     }
     .cd-nav-trigger {
       &:hover, &:focus {
-        color: transparent;
+        outline: unset;
+        .nav-trigger-text {
+          visibility: hidden;
+        }
+      }
+      .nav-trigger-text {
+        display: inline-block;
+      }
+      span {
+        visibility: visible;
       }
     }
   }
@@ -125,7 +143,7 @@ Main Page Content
 .cd-main-content {
 
   .content-wrapper {
-    padding: $header-height-S 5% 3em;
+    padding: $header-height-S 5% 3.6em;
 
     // HERE:
     // [...]
@@ -196,7 +214,7 @@ Header
   height: $header-height-S;
   width: 100%;
 
-  background: $color-1;
+  background: $color-menu-base;
   box-shadow: 0 1px 3px rgba(#000, .2);
   @include clearfix;
   @include font-smoothing;
@@ -209,15 +227,36 @@ Header
 
 .cd-logo {
   float: left;
-  display: block;
-  margin: 11px 0 0 5%;
+  display: inline-block;
+  margin: (0px+$logo-y) 0 0 (0px+$logo-x);
+  width: (0px+$logo-total-width);
 
   img {
-    display: block;
+    display: inline-block;
+    height: (0px+$logo-height);
+    width: (0px+$logo-width);
+  }
+
+  .name-holder {
+    display: inline-block;
+    width: (0px+$logo-text-width);
+    padding-left: 4px;
+    overflow: hidden;
+    span {
+      font-family: $font-logo;
+      font-size: 22px;
+      line-height: (0px+$logo-height);
+      &.name-1 {
+        color: $color-name-1;
+      }
+      &.name-2 {
+        color: $color-name-2;
+      }
+    }
   }
 
   @include MQ(M) {
-    margin: 16px 0 0 36px;
+    margin: (0px+$logo-y+$logo-y-responsive-adjustment) 0 0 (0px+$logo-x+$logo-x-responsive-adjustment);
   }
 }
 
@@ -226,8 +265,8 @@ Header
   float: right;
   position: relative;
   display: block;
-  width: 34px;
-  height: 44px;
+  width: 41px;
+  height: 53px;
   margin-right: 5%;
   /* hide text */
   overflow: hidden;
@@ -238,16 +277,16 @@ Header
     /* hamburger icon in CSS */
     position: absolute;
     display: inline-block;
-    height: 3px;
-    width: 24px;
-    background: $color-3;
+    height: 4px;
+    width: 31px;
+    background: $color-menu-white;
   }
 
   span {
     /* line in the center */
     position: absolute;
     top: 50%;
-    right: 5px;
+    right: 6px;
     margin-top: -2px;
     @include transition(background .2s);
   }
@@ -266,31 +305,31 @@ Header
 
   span::before {
     /* menu icon top line */
-    top: -6px;
+    top: -7px;
   }
 
   span::after {
     /* menu icon bottom line */
-    top: 6px;
+    top: 7px;
   }
 
   &.nav-is-visible {
     span {
       /* hide line in the center */
-      background: rgba($color-3, 0);
+      background: rgba($color-menu-white, 0);
     }
 
     span::before, span::after {
       /* keep visible other 2 lines */
-      background: rgba($color-3, 1);
+      background: rgba($color-menu-white, 1);
     }
 
     span::before {
-      @include transform(translateX(4px) translateY(-3px) rotate(45deg));
+      @include transform(translateX(5px) translateY(-4px) rotate(45deg));
     }
 
     span::after {
-      @include transform(translateX(4px) translateY(2px) rotate(-45deg));
+      @include transform(translateX(5px) translateY(4px) rotate(-45deg));
     }
   }
 
@@ -301,7 +340,7 @@ Header
 
 .cd-search {
   position: relative;
-  margin: 1.2em 5% 0.6em;
+  margin: 1.4em 5% 0.7em;
 
   &.is-hidden {
     opacity: 0;
@@ -313,17 +352,17 @@ Header
     position: absolute;
     left: 8px;
     @include center(y);
-    height: 16px;
-    width: 16px;
-    background: url($icons-path + "cd-search.svg") no-repeat 0 0;
+    height: 19px;
+    width: 19px;
+    background: url($path-icons + "cd-search.svg") no-repeat 0 0;
   }
 
   input {
-    padding-left: 32px;
+    padding-left: 38px;
     width: 100%;
-    height: 36px;
+    height: 43px;
     border: none;
-    border-radius: .25em;
+    border-radius: .3em;
     @include appearance(none);
 
     &:focus {
@@ -331,13 +370,24 @@ Header
     }
   }
 
+  // Disabling of the search function:
+  &.disabled {
+    border-left: 1px solid tint($color-menu-base, 10%);
+    * {
+      display: none;
+    }
+    &::before {
+      display: none;
+    }
+  }
+
   @include MQ(M) {
     float: left;
     display: inline-block;
-    width: 250px;
+    width: 300px;
     height: 100%;
     // padding: 12px 0;
-    margin: 0 0 0 2.5em;
+    margin: 0 0 0 3em;
 
     &.is-hidden {
       /* reset style */
@@ -345,8 +395,8 @@ Header
     }
 
     &::before {
-      background-position: 0 -16px;
-      left: 1em;
+      background-position: 0 -19px;
+      left: 1.2em;
     }
 
     form, input {
@@ -356,14 +406,14 @@ Header
 
     input {
       border: none;
-      padding-left: 2.6em;
+      padding-left: 3.1em;
       border-radius: 0;
-      background-color: $color-1;
-      border-left: 1px solid tint($color-1, 10%);
-      color: $color-3;
+      background-color: $color-menu-base;
+      border-left: 1px solid tint($color-menu-base, 10%);
+      color: $color-menu-white;
 
       @include placeholder {
-        color: tint($color-1, 30%);
+        color: tint($color-menu-base, 30%);
       }
     }
   }
@@ -393,16 +443,16 @@ Top Navigation
   }
 
   > li a {
-    padding: 1em 5% !important;
+    padding: 1.2em 5% !important;
   }
 
   img {
     /* avatar image */
     position: absolute;
-    left: 1.8em;
+    left: 2.2em;
     @include center(y);
-    height: 20px;
-    width: 20px;
+    height: 24px;
+    width: 24px;
     border-radius: 50%;
     display: none;
   }
@@ -412,13 +462,13 @@ Top Navigation
 
     a {
       display: block;
-      font-size: 1.4rem;
-      color: $color-3;
+      font-size: 1.7rem;
+      color: $color-menu-white;
     }
 
     > li {
       display: inline-block;
-      margin-right: 1em;
+      margin-right: 1.2em;
       height: 100%;
 
       &:last-of-type {
@@ -427,7 +477,7 @@ Top Navigation
     }
 
     > li a {
-      padding: 1em .6em !important;
+      padding: 1.2em .7em !important;
     }
 
     img {
@@ -437,7 +487,7 @@ Top Navigation
 
   @include MQ(L) {
     li:not(.has-children) a:hover {
-      color: $color-2;
+      color: $color-menu-denim;
     }
   }
 }
@@ -455,7 +505,7 @@ Sidebar
   top: 0;
   width: 100%;
   padding: $header-height-S 0 0;
-  background-color: darken($color-1, 8%);
+  background-color: darken($color-menu-base, 8%);
   visibility: hidden;
   opacity: 0;
   max-height: 100vh;
@@ -470,11 +520,11 @@ Sidebar
     -webkit-overflow-scrolling: touch;
     @include transition(opacity .2s 0s, visibility 0s 0s);
     max-height: none;
-    box-shadow: 0 2px 10px rgba(#000, .2);
+    box-shadow: 0 2px 12px rgba(#000, .2);
   }
 
   > ul {
-    padding: 0.6em 0;
+    padding: 0.7em 0;
 
     &:last-of-type {
       padding-bottom: 0;
@@ -483,21 +533,21 @@ Sidebar
 
   .cd-label, a {
     display: block;
-    padding: 1em 5%;
+    padding: 1.2em 5%;
   }
 
   .cd-label {
     text-transform: uppercase;
     font-weight: bold;
-    color: tint($color-1, 20%);
-    font-size: 1rem;
+    color: tint($color-menu-base, 20%);
+    font-size: 1.2rem;
     letter-spacing: .1em;
   }
 
   a {
     position: relative;
-    color: $color-3;
-    font-size: 1.4rem;
+    color: $color-menu-white;
+    font-size: 1.7rem;
   }
 
   ul.cd-top-nav > li:last-of-type > a {
@@ -505,8 +555,8 @@ Sidebar
   }
 
   > ul > li > a {
-    padding-left: calc(5% + 24px);
-    border-bottom: 1px solid darken($color-1, 3%);
+    padding-left: calc(5% + 29px);
+    border-bottom: 1px solid darken($color-menu-base, 3%);
 
     &::before {
       /* icon before item name */
@@ -514,63 +564,54 @@ Sidebar
       content: '';
       left: 5%;
       @include center(y);
-      height: 16px;
-      width: 16px;
-      background: url($icons-path + "cd-nav-icons.svg") no-repeat 0 0;
+      height: 19px;
+      width: 19px;
     }
   }
 
-  > ul > li.overview > a::before {
-    background-position: -64px 0;
+  > ul > li.getpapers > a::before {
+    background-image: url($path-icons + "cd-getpapers.svg");
   }
 
-  > ul > li.notifications > a::before {
-    background-position: -80px 0;
+  > ul > li.quickscrape > a::before {
+    background-image: url($path-icons + "cd-quickscrape.svg");
   }
 
-  > ul > li.comments > a::before {
-    background-position: -48px 0;
+  > ul > li.norma > a::before {
+    background-image: url($path-icons + "cd-norma.svg");
   }
 
-  > ul > li.bookmarks > a::before {
-    background-position: -32px 0;
-  }
-
-  > ul > li.images > a::before {
-    background-position: 0 0;
-  }
-
-  > ul > li.users > a::before {
-    background-position: -16px 0;
+  > ul > li.ami > a::before {
+    background-image: url($path-icons + "cd-ami.svg");
   }
 
   .count {
     /* notification badge */
     position: absolute;
     @include center(y);
-    right: calc(5% + 16px + 0.4em);
+    right: calc(5% + 19px + 0.5em);
 
-    padding: 0.2em 0.4em;
-    background-color: $color-4;
-    border-radius: .25em;
+    padding: 0.2em 0.5em;
+    background-color: $color-menu-bright;
+    border-radius: .3em;
 
-    color: $color-3;
+    color: $color-menu-white;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     text-align: center;
   }
 
   .action-btn a {
     display: block;
     margin: 0 5%;
-    padding: 1em 0;
-    background-color: $color-2;
-    border-radius: .25em;
+    padding: 0.8em 0;
+    background-color: $color-menu-denim;
+    border-radius: .3em;
     border: none;
-    box-shadow: 0 1px 3px rgba(#000, .3), inset 0 1px 0 rgba(#fff, .2);
+    box-shadow: 0 1px 4px rgba(#000, .3), inset 0 1px 0 rgba(#fff, .2);
 
     text-align: center;
-    color: $color-3;
+    color: $color-menu-white;
     font-weight: bold;
 
     &::before {
@@ -610,38 +651,38 @@ Sidebar
     }
 
     a {
-      font-size: 1.2rem;
+      font-size: 1.7rem;
       text-align: center;
     }
 
     > ul > li > a {
-      padding: calc(2.2em + 24px) 0 2.4em;
+      padding: calc(2.6em + 29px) 0 2.9em;
 
       &::before {
         @include center(x);
-        top: 2.4em;
+        top: 2.9em;
       }
     }
 
     .active > a {
       /* current page */
-      box-shadow: inset 3px 0 0 $color-2;
-      background-color: darken($color-1, 5%);
+      box-shadow: inset 4px 0 0 $color-menu-denim;
+      background-color: darken($color-menu-base, 5%);
     }
 
     .action-btn a {
-      margin: 1em 10% 0;
+      margin: 1.2em 10% 0;
     }
 
     .count {
-      height: 8px;
-      width: 8px;
+      height: 10px;
+      width: 10px;
       border-radius: 50%;
-      box-shadow: 0 0 6px rgba(#000, .2);
+      box-shadow: 0 0 7px rgba(#000, .2);
       padding: 0;
-      top: 2em;
+      top: 2.4em;
       @include transform(translateX(-50%));
-      left: calc(50% + 5px);
+      left: calc(50% + 6px);
       right: auto;
       color: transparent;
     }
@@ -651,50 +692,50 @@ Sidebar
     width: $sidebar-width-L;
 
     > ul {
-      padding: 0.6em 0;
+      padding: 0.7em 0;
     }
 
     > ul > li:not(.action-btn):hover > a {
-      background-color: darken($color-1, 5%);
+      background-color: darken($color-menu-base, 5%);
     }
 
     > ul > li > a {
-      padding: 1em 1em 1em 42px;
+      padding: 1.2em 1.2em 1.2em 50px;
       text-align: left;
       border-bottom: none;
 
       &::before {
         @include center(y);
-        left: 18px;
+        left: 22px;
       }
     }
 
     .cd-label {
       display: block;
-      padding: 1em 18px;
+      padding: 1.2em 22px;
     }
 
     .action-btn {
       text-align: left;
 
       a {
-        margin: 0 18px;
+        margin: 0 22px;
 
         .no-touch &:hover {
-          background-color: lighten($color-2, 5%);
+          background-color: lighten($color-menu-denim, 5%);
         }
       }
     }
 
     .count {
       /* reset style */
-      color: $color-3;
+      color: $color-menu-white;
       height: auto;
       width: auto;
-      border-radius: .25em;
-      padding: .2em .4em;
+      border-radius: .3em;
+      padding: .2em .5em;
       @include center(y);
-      right: 18px;
+      right: 22px;
       left: auto;
       box-shadow: none;
     }
@@ -707,18 +748,18 @@ Sidebar
     position: relative;
     width: 100%;
     display: none;
-    background-color: darken($color-1, 15%);
+    background-color: darken($color-menu-base, 15%);
   }
 
   > a::after {
     /* arrow icon */
     position: absolute;
     content: '';
-    height: 16px;
-    width: 16px;
+    height: 19px;
+    width: 19px;
     right: 5%;
     @include center(y);
-    background: url($icons-path + "cd-arrow.svg");
+    background: url($path-icons + "cd-arrow.svg");
   }
 
   &.selected > ul {
@@ -736,9 +777,9 @@ Sidebar
       position: absolute;
       top: 0;
       left: 100%;
-      width: 160px;
+      width: 192px;
       padding: 0;
-      box-shadow: 0 2px 10px rgba(#000, .3);
+      box-shadow: 0 2px 12px rgba(#000, .3);
     }
 
     ul a {
@@ -747,7 +788,7 @@ Sidebar
       padding: 1em;
 
       .no-touch &:hover {
-        color: $color-2;
+        color: $color-menu-denim;
       }
     }
 
@@ -758,36 +799,36 @@ Sidebar
     .cd-side-nav & {
       &.selected > a {
         /* focus state -> show sub pages */
-        background-color: darken($color-1, 5%);
+        background-color: darken($color-menu-base, 5%);
       }
     }
 
     .cd-top-nav & {
       position: relative;
-      background-color: darken($color-1, 8%);
+      background-color: darken($color-menu-base, 8%);
 
       > a {
         height: 100%;
-        padding: 0 calc(1.8em + 22px) 0 calc(1.8em + 26px) !important;
+        padding: 0 calc(2.2em + 26px) 0 calc(2.2em + 31px) !important;
         line-height: $header-height-M;
 
         &::after {
           display: block;
-          right: 1.8em;
+          right: 2.2em;
         }
       }
 
       ul {
-        background-color: darken($color-1, 15%);
-        width: 200px;
+        background-color: darken($color-menu-base, 15%);
+        width: 280px;
         top: 100%;
         right: 0;
         left: auto;
-        box-shadow: 0 1px 10px rgba(#000, .2);
+        box-shadow: 0 1px 12px rgba(#000, .2);
       }
 
       ul a {
-        padding-left: 18px !important;
+        padding-left: 22px !important;
       }
     }
   }
@@ -800,7 +841,7 @@ Sidebar
     }
 
     ul a {
-      padding-left: 18px;
+      padding-left: 22px;
     }
 
     &.active > ul {

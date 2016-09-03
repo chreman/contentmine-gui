@@ -6,6 +6,7 @@ var variablesToPass =
 {
   title: 'ContentMine',
   librariesPath: '/javascripts/libraries/',
+  imagesPath: '/images/',
   faviconPath: '/images/favicon/',
   iconsPath: '/images/icons/'
 };
