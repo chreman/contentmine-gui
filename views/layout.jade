@@ -42,7 +42,8 @@ include ../node_modules/jade-bootstrap/components/bootswatch
 
 // Basic layout:
 doctype html
-html(lang="en")
+// --- ANGULAR APP. ---
+html(lang="en" ng-app="contentMineApp")
   // Head.
   head
     // General:
@@ -51,6 +52,8 @@ html(lang="en")
     meta(name="viewport",content="width=device-width, initial-scale=1")
     meta(name="description",content="")
     meta(name="author",content="")
+    // Base URL:
+    base(href='/')
     // Favicon:
     link(rel='apple-touch-icon', sizes='60x60', href=vars.faviconPath+'apple-icon-60x60.png')
     link(rel='apple-touch-icon', sizes='72x72', href=vars.faviconPath+'apple-icon-72x72.png')
@@ -73,16 +76,16 @@ html(lang="en")
     title= vars.title
     // Refs:
     block refs
-      // Scripts:
-      script(src='/javascripts/menu/modernizr.js')
-      script(src=vars.librariesPath + 'jquery-2.1.4.min.js')
-      script(src=vars.librariesPath + 'bootstrap-3.3.4.min.js')
-      script(src='/javascripts/menu/jquery.menu-aim.js')
-      script(src='/javascripts/menu/main.js')
+      // Scripts [LIBRARIES]:
+      script(src=vars.librariesPath+'jquery-2.1.4.min.js')
+      script(src=vars.librariesPath+'bootstrap-3.3.4.min.js')
+      script(src=vars.jsPath+'menu/jquery.menu-aim.js')
+      script(src=vars.librariesPath+'angular/angular.min.js')
+      script(src=vars.librariesPath+'angular-route/angular-route.min.js')
       // Stylesheets:
-      link(rel='stylesheet', href='/stylesheets/reset.css')
-      link(rel='stylesheet', href='/stylesheets/menu.css')
-      link(rel='stylesheet', href='/stylesheets/bootstrap/bootstrap-3.3.4.min.css')
+      link(rel='stylesheet', href=vars.stylesheetsPath+'reset.css')
+      link(rel='stylesheet', href=vars.stylesheetsPath+'menu.css')
+      link(rel='stylesheet', href=vars.stylesheetsPath+'bootstrap/bootstrap-3.3.4.min.css')
       // -- Hosted alternatives --
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
         script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')
@@ -92,8 +95,15 @@ html(lang="en")
       // Scripts:
         None yet.
       // Stylesheets:
-      link(rel='stylesheet', href='/stylesheets/content.css')
+      link(rel='stylesheet', href=vars.stylesheetsPath+'content.css')
   // Body.
   body(data-spy="scroll",data-target=".scrollspy").custom-bgd
     block body
       block content
+      block body-end-refs
+        // Scripts [THAT AFFECT PAGE RENDERING]:
+        script(src=vars.jsPath+'menu/main.js')
+        script(src=vars.jsPath+'menu/modernizr.js')
+        script(src=vars.customJsPath+'app.js')
+        script(src=vars.customJsPath+'controllers.js')
+

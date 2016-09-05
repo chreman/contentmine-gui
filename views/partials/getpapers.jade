@@ -1,0 +1,9 @@
+h1 GetPapers:
+//
+  form(action="/" method="post").basic-form
+    +input("text","txtCommand","Enter your command...","Command","txtCommand")
+    +submit("Submit","default","submit")
+  .output
+    +panel-primary("Output")
+      .inner-box
+        != displayOutput.display(vars.outputValue)

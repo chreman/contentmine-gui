@@ -16,6 +16,16 @@ Standard page content.
 
   padding: 2% 5% 2% 5%;
 
+  .welcome {
+    text-align: center;
+    .name-1 {
+      color: $color-name-1b;
+    }
+    .name-2 {
+      color: $color-name-2;
+    }
+  }
+
   .basic-form {
     //
   }

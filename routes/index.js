@@ -8,9 +8,11 @@ router.get('/', function(req, res, next) {
 });
 
 /* POST, form */
+/*
 router.post('/', function(req, res){
     req.app.locals.vars.outputValue = res.commandOutput;
-    res.render('index');
+    res.render('partials/index');
 });
+*/
 
 module.exports = router;

@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var partials = require('./routes/partials');
 var users = require('./routes/users');
 var test = require('./routes/test');
 
@@ -39,14 +40,17 @@ app.locals.displayOutput = require('./working/display-output');
 app.locals.vars =
 {
   // Global.
-  title: 'ContentMine',
-  librariesPath: '/javascripts/libraries/',
-  imagesPath: '/images/',
-  faviconPath: '/images/favicon/',
-  // Menu.
-  iconsPath: '/images/icons/',
+  title:            'ContentMine',
+  // Paths.
+  jsPath:           '/javascripts/',
+  librariesPath:    '/javascripts/libraries/',
+  customJsPath:     '/javascripts/custom/',
+  stylesheetsPath:  '/stylesheets/',
+  imagesPath:       '/images/',
+  faviconPath:      '/images/favicon/',
+  iconsPath:        '/images/icons/',
   // Content.
-  outputValue: 'Command output...'
+  outputValue:      'Command output...'
 };
 
 // Custom middleware.
@@ -54,6 +58,7 @@ app.use('/', cmdHandler);
 
 // Routes registration.
 app.use('/', routes);
+app.use('/partials', partials);
 app.use('/users', users);
 app.use('/test', test);
 
