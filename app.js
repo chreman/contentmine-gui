@@ -36,6 +36,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Custom locals.
 app.locals.displayOutput = require('./working/display-output');
+app.locals.variablesToPass =
+{
+  // Global.
+  title: 'ContentMine',
+  librariesPath: '/javascripts/libraries/',
+  imagesPath: '/images/',
+  faviconPath: '/images/favicon/',
+  // Menu.
+  iconsPath: '/images/icons/',
+  // Content.
+  outputValue: 'Command output...'
+};
 
 // Custom middleware.
 app.use('/', cmdHandler);
