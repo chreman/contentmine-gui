@@ -25,7 +25,7 @@
 ///     border-top-left-radius: 3px;
 ///   }
 ///
-/// @output `border-radius`
+/// @exec_cmd `border-radius`
 
 @mixin border-top-radius($radii) {
   border-top-left-radius: $radii;

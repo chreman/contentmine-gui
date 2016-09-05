@@ -7,6 +7,10 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var test = require('./routes/test');
+
+// Custom js files.
+var cmdHandler = require('./working/cmd-handler');
 
 var app = express();
 
@@ -30,8 +34,16 @@ app.use(require('node-sass-middleware')({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Custom locals.
+app.locals.displayOutput = require('./working/display-output');
+
+// Custom middleware.
+app.use('/', cmdHandler);
+
+// Routes registration.
 app.use('/', routes);
 app.use('/users', users);
+app.use('/test', test);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

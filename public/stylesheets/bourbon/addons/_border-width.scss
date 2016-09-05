@@ -18,7 +18,7 @@
 ///
 /// @require {mixin} directional-property
 ///
-/// @output `border-width`
+/// @exec_cmd `border-width`
 
 @mixin border-width($vals...) {
   @include directional-property(border, width, $vals...);

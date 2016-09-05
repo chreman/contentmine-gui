@@ -4,7 +4,7 @@ $color-menu-base: #46515c;          // Menu base color
 $color-menu-denim: #1784c7;         // Menu denim
 $color-menu-white: #ffffff;         // Menu white
 $color-menu-bright: #ff7e66;        // Menu bright elements
-$color-match-menu-light: #585C64;   // A color that matches the lighter menu text.
+$color-menu-light: #44a5e9;         // Menu light elements. This color MUST MATCH THE SVG ICONS for getpapers etc.
 $color-bgd: #FCFAF9;                // Contentmine standard background
 $color-orange: #E57937;             // Contentmine orange
 $color-name-1: #dbdbdb;             // Contentmine stylistic name color 1 ("Content")
@@ -51,7 +51,7 @@ $logo-equal-side-gap: ($sidebar-width - $logo-total-width) / 2;
 $logo-x: $logo-equal-side-gap - $logo-x-aesthetic-adjustment - $logo-x-responsive-adjustment;
 $logo-right-side-spacer: $logo-equal-side-gap + $logo-x-aesthetic-adjustment;
 
-//sidebar size
+// sidebar size
 
 $sidebar-width-M: 132px;
 $sidebar-width-L: 240px;

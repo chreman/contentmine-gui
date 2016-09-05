@@ -143,9 +143,11 @@ Main Page Content
 .cd-main-content {
 
   .content-wrapper {
-    padding: $header-height-S 5% 3.6em;
 
-    // HERE:
+    // Small screens top positioning, padding-top overwritten for other screen sizes.
+    padding: $header-height-S 0 0 0;
+
+    // ALL SCREENS: Additional responsive options for main content wrapper:
     // [...]
 
   }
@@ -159,10 +161,11 @@ Main Page Content
   @include MQ(M) {
 
     .content-wrapper {
+
       margin-left: $sidebar-width-M;
       padding-top: $header-height-M;
 
-      // HERE:
+      // MEDIUM SCREEN: Additional responsive options for main content wrapper:
       // [...]
 
     }
@@ -175,9 +178,10 @@ Main Page Content
   @include MQ(L) {
 
     .content-wrapper {
+
       margin-left: $sidebar-width-L;
 
-      // HERE:
+      // LARGE SCREEN: Additional responsive options for main content wrapper:
       // [...]
 
     }
@@ -186,17 +190,6 @@ Main Page Content
       content: 'desktop';
     }
   }
-}
-
-// Standard content:
-.cd-main-content > .content-wrapper {
-
-  h1 {
-    text-align: center;
-    padding: 3em 0;
-    font-size: 2em;
-  }
-
 }
 
 /* --------------------------------
@@ -539,7 +532,7 @@ Sidebar
   .cd-label {
     text-transform: uppercase;
     font-weight: bold;
-    color: tint($color-menu-base, 20%);
+    color: $color-menu-light;
     font-size: 1.2rem;
     letter-spacing: .1em;
   }
@@ -624,7 +617,10 @@ Sidebar
     float: left;
     top: auto;
     width: $sidebar-width-M;
-    min-height: 100vh;
+
+    // HACK: This was originally 100vh, but that led to some strange side-effects. Fixed by setting to 99vh.
+    min-height: 99vh;
+
     padding-top: $header-height-M;
     /* reset style */
     visibility: visible;

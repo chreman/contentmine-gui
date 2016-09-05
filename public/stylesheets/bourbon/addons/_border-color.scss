@@ -19,7 +19,7 @@
 ///
 /// @require {mixin} directional-property
 ///
-/// @output `border-color`
+/// @exec_cmd `border-color`
 
 @mixin border-color($vals...) {
   @include directional-property(border, color, $vals...);

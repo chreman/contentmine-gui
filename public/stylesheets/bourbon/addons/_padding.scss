@@ -19,7 +19,7 @@
 ///
 /// @require {mixin} directional-property
 ///
-/// @output `padding`
+/// @exec_cmd `padding`
 
 @mixin padding($vals...) {
   @include directional-property(padding, false, $vals...);

@@ -1,4 +1,11 @@
 extends menu
 
 block page-content
-  h1 Page Content
+  h1 Executing Commands:
+  form(action="/" method="post").basic-form
+    +input("text","txtCommand","Enter your command...","Command","txtCommand")
+    +submit("Submit","default","submit")
+  .output
+    +panel-primary("Output")
+      .inner-box
+        != displayOutput.display(outputValue)

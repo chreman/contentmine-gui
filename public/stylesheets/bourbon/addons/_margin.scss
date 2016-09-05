@@ -19,7 +19,7 @@
 ///
 /// @require {mixin} directional-property
 ///
-/// @output `margin`
+/// @exec_cmd `margin`
 
 @mixin margin($vals...) {
   @include directional-property(margin, false, $vals...);

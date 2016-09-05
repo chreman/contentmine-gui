@@ -1,0 +1,65 @@
+@import './partials/variables'; // custom variables
+
+@import './partials/mixins'; // custom mixins
+
+@import './partials/layout'; // responsive grid and media queries
+
+/* --------------------------------
+
+Standard page content.
+
+-------------------------------- */
+
+.cd-main-content > .content-wrapper > .content {
+
+  // ALL SCREENS:
+
+  padding: 2% 5% 2% 5%;
+
+  .basic-form {
+    //
+  }
+
+  .output {
+
+    padding-top: 1.5%;
+    .panel-primary > .panel-body > .inner-box {
+      padding: 10px;
+      height: 400px;
+      overflow-y: scroll;
+    }
+
+    // Bootstrap refinement.
+    .panel-primary {
+      border-color: $color-menu-base;
+      .panel-heading {
+        background-color: $color-menu-base;
+        border-color: $color-menu-base;
+      }
+    }
+
+  }
+
+
+
+
+
+  // MEDIUMS SCREENS ONLY:
+  @include MQ(M) {
+
+    //
+
+  }
+
+
+
+
+
+  // LARGE SCREENS ONLY:
+  @include MQ(L) {
+
+    //
+
+  }
+
+}

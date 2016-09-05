@@ -124,6 +124,7 @@ jQuery(document).ready(function(){
 				scrollTop = $(window).scrollTop();
 
 			( ( scrollTop + windowHeight > sidebarHeight ) && ( mainContentHeight - sidebarHeight != 0 ) ) ? sidebar.addClass('is-fixed').css('bottom', 0) : sidebar.removeClass('is-fixed').attr('style', '');
+
 		}
 		scrolling = false;
 	}
