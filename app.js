@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Custom locals.
 app.locals.displayOutput = require('./working/display-output');
-app.locals.variablesToPass =
+app.locals.vars =
 {
   // Global.
   title: 'ContentMine',
