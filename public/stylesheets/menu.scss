@@ -578,6 +578,10 @@ Sidebar
     background-image: url($path-icons + "cd-ami.svg");
   }
 
+  > ul > li.command > a::before {
+    background-image: url($path-icons + "cd-command.svg");
+  }
+
   .count {
     /* notification badge */
     position: absolute;

@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var partials = require('./routes/partials');
-var users = require('./routes/users');
 var test = require('./routes/test');
+var api = require('./routes/api');
 
 // Custom js files.
 var cmdHandler = require('./working/cmd-handler');
@@ -54,13 +54,15 @@ app.locals.vars =
 };
 
 // Custom middleware.
-app.use('/', cmdHandler);
+//app.use('/', cmdHandler);
 
 // Routes registration.
 app.use('/', routes);
 app.use('/partials', partials);
-app.use('/users', users);
 app.use('/test', test);
+
+// JSON API.
+app.use('/', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
